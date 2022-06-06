@@ -1,0 +1,19 @@
+<div class="container">
+  <form id="frmDatos">
+    <input type="text" id="id" name="id" [(ngModel)]="id" class="form-control">
+    <input type="text" id="user" name="user" [(ngModel)]="user" class="form-control">
+  </form>
+  <button (click)="addUser()" class="btn btn-primary" type="button">Agregar usuario</button>
+  <button (click)="updateUser()" class="btn btn-primary" type="button">Actualizar usuario</button>
+  <button (click)="getData()" class="btn btn-primary" type="button">Get usuario</button>
+  <button (click)="deleteUser()" class="btn btn-primary" type="button">Delete usuario</button>
+  <hr>
+  <form id="frmLogin">
+    <input type="text" id="userLogin" name="userLogin" [(ngModel)]="userLogin" class="form-control">
+    &nbsp;
+    <input type="text" id="passLogin" name="passLogin" [(ngModel)]="passLogin" class="form-control">
+    <br>
+    <button (click)="login()" class="btn btn-primary" type="button">Login</button>
+    <button (click)="create()" class="btn btn-primary" type="button">Sign Up</button>
+  </form>
+</div>

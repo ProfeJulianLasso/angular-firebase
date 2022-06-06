@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "kanbanfire-afd29": {
+      "hosting": {
+        "kanban-fire": [
+          "kanbanfire-afd29"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "kanbanfire-afd29"
+  }
+}
