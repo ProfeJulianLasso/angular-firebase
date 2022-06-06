@@ -8,7 +8,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./seguro.component.css'],
 })
 export class SeguroComponent implements OnInit {
-  constructor(private afAuth: AngularFireAuth, private router: Router) {}
+  constructor(private afAuth: AngularFireAuth, private router: Router) {
+    // Obtener el token JWT para enviar al backend
+    this.afAuth.currentUser.then((user) => {
+      user?.getIdToken().then((token) => {
+        console.log(token);
+      });
+    });
+  }
 
   ngOnInit(): void {}
 

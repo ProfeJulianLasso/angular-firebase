@@ -82,12 +82,17 @@ export class AppComponent implements OnInit, OnDestroy {
     // Guardar información cuando necesitamos controlar el ID
     // const id = this.storage.createId();
     const id = uuidv4();
-    this.usersCollection.doc(id).set({
-      id: id,
-      user: this.user,
-      password: 'test',
-      email: 'test@example.com',
-    });
+    this.usersCollection
+      .doc(id)
+      .set({
+        id: id,
+        user: this.user,
+        password: 'test',
+        email: 'test@example.com',
+      })
+      .then(() => {
+        console.log('Documento creado');
+      });
 
     // Agregar información cuando no necesitamos controlar el ID
     // this.usersCollection.add({
@@ -117,6 +122,13 @@ export class AppComponent implements OnInit, OnDestroy {
         if (result.user?.emailVerified === false) {
           this.afAuth.signOut();
         } else {
+          // Obtener el token JWT para enviar al backend
+          this.afAuth.currentUser.then((user) => {
+            user?.getIdToken().then((token) => {
+              console.log('TOKEN LOGIN :', token);
+            });
+          });
+          // redirecciono a la página que pide seguridad
           this.router.navigateByUrl('/seguro');
         }
       });
